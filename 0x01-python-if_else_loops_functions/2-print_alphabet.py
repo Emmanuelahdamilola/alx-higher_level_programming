@@ -1,5 +1,3 @@
 #!/usr/bin/python3
-counter = 97
-while counter <= 122:
-    print(chr(counter), end=" ")
-    counter = counter + 1
+for ascii_alp in range(97, 123):
+    print("{}".format(chr(ascii_alp)), end='')
