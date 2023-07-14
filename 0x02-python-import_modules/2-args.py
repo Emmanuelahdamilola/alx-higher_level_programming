@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-import sys
+if __name__ == "__main__":
+    import sys
 
 arg = sys.argv
 num_args = len(arg) - 1
