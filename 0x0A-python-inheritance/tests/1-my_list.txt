@@ -1,0 +1,18 @@
+import unittest
+
+class MyTestList(unittest.TestCase):
+    def test_print_sorted(self):
+        my_list = MyList([5, 2, 8, 1, 3])
+        expected_output = [1, 2, 3, 5, 8]
+
+        with captured_output() as (out, err):
+            my_list.print_sorted()
+        
+        printed_output = out.getvalue().strip()
+        printed_list = [int(x) for x in printed_output.split()]
+
+        self.assertEqual(printed_list, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
+
