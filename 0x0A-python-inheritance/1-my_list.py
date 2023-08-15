@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+"""Defines a derived class"""
+
+
 class MyList(list):
     """
     A custom list class that inherits from the built-in list class.
     Attributes:
         Inherits all attributes from the list class.
-    Methods:
-        print_sorted(): Prints the elements of the list in ascending sorted order.
     """
 
     def print_sorted(self):
