@@ -1,6 +1,14 @@
 #!/usr/bin/python3
-"""Defines the class"""
-
 
 class BaseGeometry:
-    pass
+    """
+    An empty class representing a base geometry.
+    """
+    def __init__(self):
+        pass
+
+    def area(self):
+        raise NotImplementedError
+
+    def perimeter(self):
+        raise NotImplementedError
