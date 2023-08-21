@@ -1,15 +1,5 @@
 0x0C. Python - Almost a circle
 
-
-0x0C. Python - Almost a circle
-Python
-OOP
- By: Guillaume
- Weight: 1
- Project will start Aug 17, 2023 6:00 AM, must end by Aug 22, 2023 6:00 AM
- Checker will be released at Aug 21, 2023 6:00 PM
- Manual QA review must be done (request it when you are done with the project)
- An auto review will be launched at the deadline
 Background Context
 The AirBnB project is a big part of the Higher level curriculum. This project will help you be ready for it.
 
