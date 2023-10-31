@@ -15,7 +15,8 @@ if __name__ == '__main__':
     cur = db.cursor()
 
     # Execute an SQL query to retrieve all states and sort by states.id
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name\
+                LIKE BINARY 'N%' ORDER BY id ASC")
 
     # Fetch and print the results
     rows = cur.fetchall()
