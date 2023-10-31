@@ -1,37 +1,28 @@
 #!/usr/bin/python3
 """
-Script that safely searches and displays values in the 'states' table of
-'hbtn_0e_0_usa' where the name matches the provided argument, protecting against
-SQL injection.
+Script that takes in an argument and displays all values
 """
-
 import MySQLdb
-import sys
+from sys import argv
 
-if __name__ == '__main':
 
-    # Establish a connection to the MySQL database
-    connection = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        charset="utf8"
-    )
+# The code should not be executed when imported
+if __name__ == '__main__':
 
-    # Create a cursor to interact with the database
-    cursor = connection.cursor()
+    # make a connection to the database
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3])
 
-    # Execute a parameterized SQL query to retrieve states
-    cursor.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC", [argv[4]])
+    # Execute an SQL query to retrieve states that match the provided name
+    # and also safe from SQL injection
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name=%s\
+                ORDER BY id ASC", (argv[4],))
 
-    # Fetch and print the results
-    query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
+    rows = cur.fetchall()
+    for i in rows:
+        print(i)
 
-    # Clean up resources
-    cursor.close()
-    connection.close()
-
+    # Clean up process
+    cur.close()
+    db.close()
