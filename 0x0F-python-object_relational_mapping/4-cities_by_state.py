@@ -4,32 +4,35 @@ Script that lists all cities from the database hbtn_0e_4_usa
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
-if __name__ == '__main':
+
+if __name__ == '__main__':
 
     # Establish a connection to the MySQL database
-    connection = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
+        user=argv[1],
+        passwd=argv[2],
+        db=argv[3],
 
     )
 
     # Create a cursor to interact with the database
-    cursor = connection.cursor()
+    cur = db.cursor()
 
-    # # Execute SQL query to retrieve cities and sort by cities.id
-    cursor.execute("SELECT * FROM cities ORDER BY cities.id")
+    # Execute SQL query to retrieve cities and sort by cities.id
+    cur.execute("SELECT cities.id, cities.name, states.name FROM cities \
+            INNER JOIN states ON cities.state_id = states.id \
+                    ORDER BY cities.id ASC")
 
     # Fetch and print the results
-    query_rows = cursor.fetchall()
-    for row in query_rows:
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
     # Clean up resources
-    cursor.close()
-    connection.close()
+    cur.close()
+    db.close()
 
