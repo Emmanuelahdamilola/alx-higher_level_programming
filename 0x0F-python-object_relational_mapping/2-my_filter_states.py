@@ -23,7 +23,8 @@ if __name__ == '__main':
     cur = db.cursor()
 
     # Execute an SQL query to retrieve states that match the provided name
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}'".format(argv[4])
+    query = "SELECT * FROM states WHERE name=s%\
+            ORDER BY ASC", (argv[4])
     cur.execute(query)
 
     # Fetch and print the results
