@@ -1,9 +1,10 @@
 #!/usr/bin/node
-// script that prints 3 lines
-// by using an array of string and a loop
 
-const programmingLang = ['C is fun', 'Python is cool', 'javascript is amazing'];
+// Define an array of messages
+const messageArray = ['C is fun', 'Python is cool', 'Javascript is amazing'];
 
-for (let i = 0; i < programmingLang.length; i++) {
-  console.log(programmingLang[i]);
+// Iterate through the messageArray and print each message
+for (let i = 0; i < messageArray.length; i++) {
+  console.log(messageArray[i]);
 }
+
