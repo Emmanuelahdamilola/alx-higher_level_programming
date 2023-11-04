@@ -16,18 +16,18 @@ if __name__ == "__main__":
     email = argv[2]
 
     # Create a dictionary with 'email' as a parameter and encode it.
-    values = {'email': email}
-    data = urllib.parse.urlencode(values)
-    data = data.encode('ascii')
+    email_data = {'email': email}
+    email_encoded = urllib.parse.urlencode(email_data)
+    email_encoded = email_encoded.encode('ascii')
 
-    # Create a POST request with the URL and encoded data.
-    req = urllib.request.Request(url, data)
+    # Create a POST request with the URL and encoded email data.
+    request = urllib.request.Request(url, email_encoded)
 
     # Send the POST request and retrieve the response.
-    with urllib.request.urlopen(req) as response:
-        html = response.read()
-        html_str = html.decode('utf-8')
+    with urllib.request.urlopen(request) as response:
+        response_body = response.read()
+        response_body_str = response_body.decode('utf-8')
 
     # Display the body of the response (decoded in utf-8).
-    print(html_str)
+    print(response_body_str)
 
