@@ -1,6 +1,40 @@
 #!/usr/bin/node
-import { readFileSync, writeFileSync } from 'fs';
 
-const firstArg = readFileSync(process.argv[2]).toString();
-const secondArg = readFileSync(process.argv[3]).toString();
-writeFileSync(process.argv[4], firstArg + secondArg);
+let fs = require('fs');
+
+let inputFilePathA = process.argv[2];
+let inputFilePathB = process.argv[3];
+let outputFilePath = process.argv[4];
+
+function concat(inputFileA, inputFileB, outputFile) {
+  // Read the content of inputFileA
+  fs.readFile(inputFileA, function (err, dataA) {
+    if (err) {
+      console.log(err.stack);
+    } else {
+      // Append the content of inputFileA to outputFile
+      fs.appendFile(outputFile, dataA, function (err) {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          // Read the content of inputFileB
+          fs.readFile(inputFileB, function (err, dataB) {
+            if (err) {
+              console.log(err.stack);
+            } else {
+              // Append the content of inputFileB to outputFile
+              fs.appendFile(outputFile, dataB, function (err) {
+                if (err) {
+                  console.log(err.stack);
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+}
+
+concat(inputFilePathA, inputFilePathB, outputFilePath);
+
