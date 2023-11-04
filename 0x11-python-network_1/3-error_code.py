@@ -7,7 +7,6 @@ the body of the response (decoded in utf-8).
 import urllib.request
 from sys import argv
 
-
 if __name__ == "__main__":
     """
     Main function: Takes in a URL and an email, sends a POST 
@@ -17,17 +16,17 @@ if __name__ == "__main__":
     url = argv[1]
 
     # Create a POST request with the URL.
-    req = urllib.request.Request(url)
+    post_request = urllib.request.Request(url)
     
     try:
         # Send a POST request to the URL and retrieve the response.
-        with urllib.request.urlopen(req) as response:
-            html = response.read()
+        with urllib.request.urlopen(post_request) as response:
+            response_content = response.read()
             
             # Decode the response content from bytes to utf-8 encoded string.
-            html_body = html.decode('utf-8')
+            decoded_response = response_content.decode('utf-8')
             # Display the body of the response
-            print(html_body)
+            print(decoded_response)
     except urllib.error.HTTPError as e:
         # Handle HTTP errors and print the HTTP status code.
         print("Error code: {}".format(e.code))
