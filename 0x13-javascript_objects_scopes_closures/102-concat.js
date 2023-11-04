@@ -1,12 +1,12 @@
 #!/usr/bin/node
 
-let fs = require('fs');
+const fs = require('fs');
 
-let inputFilePathA = process.argv[2];
-let inputFilePathB = process.argv[3];
-let outputFilePath = process.argv[4];
+const inputFilePathA = process.argv[2];
+const inputFilePathB = process.argv[3];
+const outputFilePath = process.argv[4];
 
-function concat(inputFileA, inputFileB, outputFile) {
+function concat (inputFileA, inputFileB, outputFile) {
   // Read the content of inputFileA
   fs.readFile(inputFileA, function (err, dataA) {
     if (err) {
@@ -37,4 +37,3 @@ function concat(inputFileA, inputFileB, outputFile) {
 }
 
 concat(inputFilePathA, inputFilePathB, outputFilePath);
-
