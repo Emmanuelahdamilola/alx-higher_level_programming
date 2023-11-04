@@ -1,13 +1,18 @@
 #!/usr/bin/node
-// script that prints a message depending of the number of arguments passed
 
-const args = process.argv.slice(2);
-const argsLength = args.length;
+// Check if there is a second command-line argument and store it in 'secondArg'
+const secondArg = process.argv[2];
 
-if (argsLength === 0) {
-  console.log("No argument");
-} else if (argsLength === 1) {
-  console.log("Argument found");
-} else {
-  console.log("Arguments found");
+// Check if there is a third command-line argument
+if (process.argv[3]) {
+  console.log('Arguments found');
+} 
+// If there's no third argument but a second argument exists
+else if (secondArg) {
+  console.log('Argument found');
+} 
+// If no second or third argument is present
+else {
+  console.log('No argument');
 }
+
