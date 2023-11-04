@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Open a connection to the URL provided as a command-line argument.
     with urllib.request.urlopen(argv[1]) as response:
         # Extract the 'X-Request-Id' header from the response's headers.
-        html_id = response.info().get('X-Request-Id')
+        x_request_id = response.info().get('X-Request-Id')
         
         # Print the value of the 'X-Request-Id' header.
-        print(html_id)
+        print(x_request_id)
